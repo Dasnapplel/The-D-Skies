@@ -79,6 +79,7 @@ Gravity = 0.5
 Max_fall_speed = 12 # terminal velocity, gives you more time to steer onto a cloud
 
 jump_sound = pygame.mixer.Sound("assets/jump.wav") # load the sound
+boom_sound = pygame.mixer.Sound("assets/boom.wav") # load the sound
 
 
 def reset_game():
@@ -190,6 +191,7 @@ while is_game_running:
             if lotto == 1:
                 hp -= 1
                 cloud["type"] = "thunder"
+                boom_sound.play()
             elif lotto == 2:
                 cloud["type"] = "mist"
             elif lotto <= 6:
@@ -222,6 +224,7 @@ while is_game_running:
                 Vel_Y = Jump_velocity * 2
             elif lotto == 3:
                 hp -= 1
+                boom_sound.play()
             # lotto == 4: harmless bump, nothing happens
             rockets.remove((rocket_img, rocket_rect))
             continue  # skip drawing this one, but keep the loop going
